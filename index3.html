@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" id="viewport" content="target-densitydpi=high-dpi,initial-scale=1.0,user-scalable=no" />
+    <title>Document Title</title>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        var jsonSample = [{
+            "id": 0,
+            "commentText": "Test",
+            "createdBy": "User1",
+            "isImportant": false
+        }, {
+            "id": 1,
+            "commentText": "Hello World",
+            "createdBy": "User2",
+            "isImportant": true
+        }, {
+            "id": 2,
+            "commentText": "Testing",
+            "createdBy": "User2",
+            "isImportant": false
+        }, {
+            "id": 3,
+            "commentText": "This is another one",
+            "createdBy": "User2",
+            "isImportant": true
+        }, {
+            "id": 4,
+            "commentText": "Hello World!",
+            "createdBy": "User2",
+            "isImportant": true
+        }];
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script>
+        var result = "<H3>Current json values (id and comment text are shown only for this example)</h3>";
+
+        $.each(jsonSample, function(i, v) {
+
+            result += jsonSample[i].id + " " + jsonSample[i].commentText + " <br>";
+
+            $('#result').html(result);
+
+        });
+
+        response = $(jsonSample).filter(function(i, n) {
+            return n.isImportant !== false;
+        });
+        result += "<hr>";
+        result += "<H3>Filtered response json values (id and comment text are shown only for this example)</h3>";
+        $.each(response, function(i, v) {
+
+            result += response[i].id + " " + response[i].commentText + " <br>";
+
+            $('#result').html(result);
+
+        });
+
+        result += "<hr>";
+        result += "<H3>jsonSample made to equal response json values (id and comment text are shown only for this example)</h3>";
+        jsonSample = response;
+
+        $.each(jsonSample, function(i, v) {
+
+            result += jsonSample[i].id + " " + jsonSample[i].commentText + " <br>";
+
+            $('#result').html(result);
+
+        });
+    </script>
+</body>
+
+</html>
